@@ -3,7 +3,6 @@ import MenuItem from "../MenuItem";
 import {Page} from "./Page";
 import {IconButton, List, Toolbar} from "@material-ui/core";
 import {AccountCircleOutlined, Settings} from "@material-ui/icons";
-import jQuery  from 'jquery';
 import './HomePage.css';
 
 export default class HomePage extends Page {
