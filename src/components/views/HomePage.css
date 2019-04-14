@@ -1,0 +1,19 @@
+.page-container {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    background-image: url(/img/layers_background.png);
+    background-repeat: repeat no-repeat;
+    background-position-x: center;
+}
+
+.title {
+    top: 32px;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 1;
+}
