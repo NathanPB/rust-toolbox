@@ -17,3 +17,15 @@
     position: -webkit-sticky;
     z-index: 1;
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #D72439;
+    border-left: solid 2px #E24E59;
+    border-right: solid 2px #8F1422;
+    color: white;
+    text-align: center;
+    font-size: 13px;
+}
