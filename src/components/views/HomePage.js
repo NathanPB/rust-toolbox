@@ -44,7 +44,7 @@ export default class HomePage extends Page {
               {this.state.buttons}
             </List>
             <footer>
-              This is a third-part app and is not affiliated with Facepunch Studios Ltd
+              This is a third-part app and it's not affiliated with Facepunch Studios Ltd
             </footer>
           </div>
         )
