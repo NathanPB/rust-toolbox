@@ -18,7 +18,7 @@ export default class Page extends React.Component {
 
   renderHeader = () => {
     return (
-      <div style={{position: 'fixed', width: '100%', zIndex: 1}} className="themed-container">
+      <div style={{width: '100%', zIndex: 1}} className="themed-container">
         <Toolbar disableGutters={true}>
           <IconButton style={{margin: '0.2em'}} align="left">
             <Menu
