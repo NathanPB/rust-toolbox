@@ -11,25 +11,11 @@ export default class HomePage extends Page {
         super(props);
         this.state = {
             title: 'Rust Toolbox',
-            buttons: []
+            buttons: [
+              <MenuItem title="Server List" icon="/icons/server_list.png" goto="servers"/>
+            ]
         }
     }
-
-    renderHeader = () => {
-      return (
-        <div style={{position: 'fixed', width: '100%', zIndex: 1}}>
-          <Toolbar>
-            <IconButton>
-              <AccountCircleOutlined/>
-            </IconButton>
-            <div style={{flexGrow: 1}}/>
-            <IconButton>
-              <Settings/>
-            </IconButton>
-          </Toolbar>
-        </div>
-      )
-    };
 
     drawnPage = () => {
         return(
