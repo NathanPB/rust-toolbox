@@ -11,7 +11,7 @@ export default class HomePage extends Page {
         super(props);
         this.state = {
             title: 'Rust Toolbox',
-            buttons: [0, 0, 0, 0, 0, 0, 0 ,0 ,0, 0].map((_, index) => (<MenuItem title={`Button ${index}`}/>))
+            buttons: []
         }
     }
 
