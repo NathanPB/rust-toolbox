@@ -6,3 +6,8 @@ body {
   overflow: hidden;
   background-color: #181426;
 }
+
+@font-face {
+  font-family: 'rtb';
+  src: url(/fonts/rtb/RTB_font.ttf) format('truetype');
+}
