@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Avatar, ListItem, ListItemText, Typography} from "@material-ui/core";
+import {Avatar, ListItem} from "@material-ui/core";
 import {Redirect} from "react-router";
 import './MenuItem.css';
 
@@ -25,19 +25,13 @@ export default class MenuItem extends React.Component {
             src={this.props.icon}
             className="button-style"
           />
-          <ListItemText
-            primary={
-              <Typography style={{color: '#FFFFFF'}} variant="h4" noWrap={true} align="center">
-                {this.props.title}
-              </Typography>
-            }
-            className="button-style"
-            style={{
-              color: 'white',
-              marginLeft: '1em',
-              minHeight: '3em',
-            }}
-          />
+          <div style={{ flexGrow: 100, marginLeft: '1em' }} className="button-style">
+            <img
+              src={this.props.title}
+              alt={this.props.title}
+              style={{ maxWidth: '100%', maxHeight: '100%', display: 'block', margin: 'auto' }}
+            />
+          </div>
         </ListItem>
       )
     }
