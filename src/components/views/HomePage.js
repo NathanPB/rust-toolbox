@@ -1,8 +1,7 @@
 import * as React from 'react';
 import MenuItem from "../MenuItem";
-import {Page} from "./Page";
-import {IconButton, List, Toolbar} from "@material-ui/core";
-import {AccountCircleOutlined, Settings} from "@material-ui/icons";
+import Page from "./Page";
+import {List} from "@material-ui/core";
 import './HomePage.css';
 
 export default class HomePage extends Page {

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {Page} from "./Page";
-import {Icon, IconButton, Toolbar} from "@material-ui/core";
-import { loadCSS } from 'fg-loadcss/src/loadCSS';
+import Page from "./Page";
+import {IconButton, Toolbar} from "@material-ui/core";
 import {
   Search as IconSearch,
   SortByAlpha as IconSort,
