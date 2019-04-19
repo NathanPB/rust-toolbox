@@ -27,7 +27,7 @@ export default class MenuItem extends React.Component {
           />
           <ListItemText
             primary={
-              <Typography style={{color: '#FFFFFF'}} variant="h4" noWrap={true} align="center">
+              <Typography style={{color: '#FFFFFF', fontFamily: 'rtb', textTransform: 'uppercase'}} variant="h4" noWrap={true} align="center">
                 {this.props.title}
               </Typography>
             }
