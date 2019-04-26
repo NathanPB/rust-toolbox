@@ -21,7 +21,6 @@ export default class ServerListNavigator {
     if(!this.navigation.next && !this.navigation.previous){
       await this.refreshData(); //probably the data was not initialized yet;
     }
-    console.log('a', this.navigation.next, this.currentUrl);
     return this.navigation.next;
   };
 
@@ -33,7 +32,6 @@ export default class ServerListNavigator {
     let axiosResponse = await Axios.get(this.currentUrl);
     if(axiosResponse && axiosResponse.data){
       let response = axiosResponse.data;
-      console.log(response);
 
       if(response.links){
         if(response.links.next && !this.navigation.next){
