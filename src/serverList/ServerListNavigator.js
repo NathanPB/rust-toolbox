@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const API_URL = 'https://api.battlemetrics.com/servers';
+const API_URL = 'https://api.battlemetrics.com/servers?filter[game]=rust';
 export default class ServerListNavigator {
 
   static createNavigator = (options) => {
