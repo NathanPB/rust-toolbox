@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import HomePage from "./components/views/HomePage";
+import ServerList from "./components/views/ServerList";
 
 class App extends Component {
   constructor(props){
@@ -13,7 +14,10 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Route path="/" component={HomePage}/>
+        <Switch>
+          <Route path="/" exact={true} component={HomePage}/>
+          <Route path="/servers" component={ServerList}/>
+        </Switch>
       </BrowserRouter>
     );
   }

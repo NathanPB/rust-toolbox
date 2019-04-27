@@ -11,3 +11,13 @@ body {
   font-family: 'rtb';
   src: url(/fonts/rtb/RTB_font.ttf) format('truetype');
 }
+
+.themed-container {
+  border-radius: 2px !important;
+  background-color: #D72439 !important;
+  border-left: solid 2px #E24E59 !important;
+  border-bottom: solid 2px #8F1422 !important;
+  -webkit-box-shadow: 5px 5px 5px -2px rgba(36,6,9,1);
+  -moz-box-shadow: 5px 5px 5px -2px rgba(36,6,9,1);
+  box-shadow: 5px 5px 5px -2px rgba(36,6,9,1);
+}
