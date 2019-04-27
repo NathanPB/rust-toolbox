@@ -1,8 +1,7 @@
 import * as React from 'react';
 import MenuItem from "../MenuItem";
-import {Page} from "./Page";
-import {IconButton, List, Toolbar} from "@material-ui/core";
-import {AccountCircleOutlined, Settings} from "@material-ui/icons";
+import Page from "./Page";
+import {List} from "@material-ui/core";
 import './HomePage.css';
 
 export default class HomePage extends Page {
@@ -11,25 +10,11 @@ export default class HomePage extends Page {
         super(props);
         this.state = {
             title: 'Rust Toolbox',
-            buttons: []
+            buttons: [
+              <MenuItem title="Server List" icon="/icons/server_list.png" goto="servers"/>
+            ]
         }
     }
-
-    renderHeader = () => {
-      return (
-        <div style={{position: 'fixed', width: '100%', zIndex: 1}}>
-          <Toolbar>
-            <IconButton>
-              <AccountCircleOutlined/>
-            </IconButton>
-            <div style={{flexGrow: 1}}/>
-            <IconButton>
-              <Settings/>
-            </IconButton>
-          </Toolbar>
-        </div>
-      )
-    };
 
     drawnPage = () => {
         return(
