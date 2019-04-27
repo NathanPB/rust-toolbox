@@ -24,7 +24,7 @@ export class Page extends React.Component {
 
   render = () => {
     return(
-      <div style={{display: 'flex', flexDirection: 'column'}}>
+      <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
         { this.renderHeader() }
         <div style={{flexGrow: 100}}>
           { this.drawnPage() }
