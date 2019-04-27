@@ -11,3 +11,7 @@
 .arrow-reversed {
   transform: rotate(180deg);
 }
+
+li {
+  list-style: none;
+}

@@ -5,7 +5,7 @@ import {
   CircularProgress,
   Collapse,
   IconButton,
-  ListItem,
+  ListItem, ListItemSecondaryAction,
   ListItemText,
   Toolbar,
   Typography
@@ -13,12 +13,13 @@ import {
 import {
   Search as IconSearch,
   SortByAlpha as IconSort,
-  RemoveRedEye as IconEye,
   Menu, ArrowDownward,
+  VerifiedUser
 } from "@material-ui/icons"
 import ServerListNavigator from "../../serverList/ServerListNavigator";
 import Infinite from 'react-infinite';
 import './ServerList.css';
+import Badge from "../Badge";
 
 export default class ServerList extends Page {
 
@@ -82,22 +83,70 @@ export default class ServerList extends Page {
             <IconButton>
               <IconSort style={iconStyles} className='themed-container'/>
             </IconButton>
-            <IconButton>
-              <IconEye style={iconStyles} className='themed-container'/>
-            </IconButton>
           </Toolbar>
         </Collapse>
       )
   };
 
   buildElement = (server) =>
-    <ListItem className="infinite-list-item server-item" style={{ height: 60, color: 'white', cursor: 'pointer', width: '98%' }}>
-      <Avatar
-        src={`https://www.countryflags.io/${server.attributes.country}/flat/64.png`}
-      />
+    <ListItem className="infinite-list-item server-item" style={{ minHeight: 60, color: 'white', cursor: 'pointer', width: '99%' }}>
+      <Avatar src={`https://www.countryflags.io/${server.attributes.country}/flat/64.png`}/>
+
       <ListItemText
-        primary={<Typography style={{ color: 'white' }}>{server.attributes.name}</Typography>}
+        primary={
+          <Typography style={{ color: 'white' }}>
+            { false && //TODO something to check if the server is a official one
+              (
+                <span style={{ marginRight: '0.5em' }} title="Official Server">
+                  <VerifiedUser style={{ fontSize: 12, color: 'gold'}}/>
+                </span>
+              )
+            }
+            {server.attributes.name}
+          </Typography>
+        }
+        secondary={
+          <div style={{ whiteSpace: 'nowrap' }}>
+            <Badge
+              display={server.attributes.status !== 'online'}
+              color="#D72439"
+              tooltip="Server Status"
+            >
+              {server.attributes.status}
+            </Badge>
+            <Badge
+              color="blue"
+              tooltip="Map Type"
+            >
+              {
+                //Select the icon according to the latitude of the physical server location
+                `${['🌎', '🌍', '🌏'][Math.round(server.attributes.location[1] / 128) + 1]} ${server.attributes.details.map}`
+              }
+            </Badge>
+            <Badge
+              color="blue"
+              tooltip="Map Age"
+            >
+              {
+                //Calculates the server map time based on the last change date
+                '📅 ' + ((+new Date() - +new Date(server.attributes.details.rust_last_seed_change)) / 86400000).toFixed(2)
+              } Days
+            </Badge>
+            <Badge
+              display={server.attributes.details.rust_modded}
+              color="blue"
+              tooltip="Modded Server"
+            >
+             <span> 🔧 Modded</span>
+            </Badge>
+          </div>
+        }
       />
+
+      <ListItemSecondaryAction style={{ paddingRight: '1em' }}>
+        <Typography style={{ color: 'white', blankSpace: 'nowrap' }}>{server.attributes.players}/{server.attributes.maxPlayers}</Typography>
+      </ListItemSecondaryAction>
+
     </ListItem>;
 
   loadData = () => {
