@@ -62,7 +62,7 @@ export default class Page extends React.Component {
       return (<Redirect to="/"/>)
     } else {
       return(
-        <div style={{display: 'flex', flexDirection: 'column', height: '100vh'}}>
+        <div style={{display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw'}}>
           { this.renderHeader() }
           <div style={{flexGrow: 100}}>
             { this.drawnPage() }
