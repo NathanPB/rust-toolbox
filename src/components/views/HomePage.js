@@ -1,7 +1,8 @@
 import * as React from 'react';
 import MenuItem from "../MenuItem";
 import Page from "./Page";
-import {List} from "@material-ui/core";
+import {IconButton, List} from "@material-ui/core";
+import { AccountCircle, Settings } from "@material-ui/icons";
 import './HomePage.css';
 
 export default class HomePage extends Page {
@@ -15,6 +16,19 @@ export default class HomePage extends Page {
             ]
         }
     }
+
+    renderHeader = () =>
+      (
+        <div style={{ flexGrow: 1, display: 'flex' }}>
+          <IconButton disabled>
+            <AccountCircle/>
+          </IconButton>
+          <div style={{ flexGrow: 100 }}/>
+          <IconButton disabled>
+            <Settings/>
+          </IconButton>
+        </div>
+      );
 
     drawnPage = () => {
         return(
