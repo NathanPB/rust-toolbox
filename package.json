@@ -15,7 +15,8 @@
     "react-infinite": "^0.13.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-virtualized": "^9.21.0"
   },
   "scripts": {
     "start": "react-scripts start",

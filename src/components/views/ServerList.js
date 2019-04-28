@@ -20,6 +20,7 @@ import ServerListNavigator from "../../serverList/ServerListNavigator";
 import Infinite from 'react-infinite';
 import './ServerList.css';
 import Badge from "../Badge";
+import {AutoSizer} from "react-virtualized";
 
 export default class ServerList extends Page {
 
@@ -89,7 +90,7 @@ export default class ServerList extends Page {
   };
 
   buildElement = (server) =>
-    <ListItem className="infinite-list-item server-item" style={{ minHeight: 60, color: 'white', cursor: 'pointer', width: '99%' }}>
+    <ListItem className="infinite-list-item server-item" style={{ minHeight: 60, color: 'white', cursor: 'pointer', width: '96%', marginLeft: '2%'}}>
       <Avatar src={`https://www.countryflags.io/${server.attributes.country}/flat/64.png`}/>
 
       <ListItemText
@@ -150,8 +151,9 @@ export default class ServerList extends Page {
     </ListItem>;
 
   loadData = () => {
+    console.log('aaa');
     if(this.state.nextNavigator && this.state.nextNavigator.next){
-      this.setState({isLoading: true}, ()=>{
+      this.setState({isLoading: true}, ()=> {
         let servers = this.state.servers;
         this.state.nextNavigator.data().then(async data => {
           servers = servers.concat(data.map(it => this.buildElement(it)));
@@ -167,19 +169,26 @@ export default class ServerList extends Page {
 
   drawnPage = () => {
     return(
-      <div style={{ paddingTop: 256, padding: '1em' }}>
-        <Infinite
-          containerHeight={512}
-          elementHeight={60}
-          infiniteLoadBeginEdgeOffset={128}
-          isInfiniteLoading={this.state.isLoading}
-          loadingSpinnerDelegate={()=><CircularProgress/>}
-          onInfiniteLoad={this.loadData}
-          timeScrollStateLastsForAfterUserScrolls={150}
-        >
-          {this.state.servers}
-        </Infinite>
-      </div>
+      <AutoSizer>
+        {
+          ({ height, width }) => (
+            (height > 0 && width > 0) &&
+              <div style={{ width: width }}>
+                <Infinite
+                  containerHeight={height}
+                  elementHeight={60}
+                  infiniteLoadBeginEdgeOffset={128}
+                  isInfiniteLoading={this.state.isLoading}
+                  loadingSpinnerDelegate={()=><CircularProgress/>}
+                  onInfiniteLoad={this.loadData}
+                  timeScrollStateLastsForAfterUserScrolls={150}
+                >
+                  {this.state.servers}
+                </Infinite>
+              </div>
+          )
+        }
+      </AutoSizer>
     );
   };
 }
