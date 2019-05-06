@@ -26,14 +26,31 @@ export default class ServerList extends Page {
 
   constructor(props) {
     super(props, 'Server List');
-    this.state.nextNavigator = ServerListNavigator.createNavigator();
+    this.state.options = {sort: 'rank', filter: {}};
     this.state.servers = [];
     this.state.isLoading = false;
     this.state.showButtons = true;
 
     this.loadData = this.loadData.bind(this);
     this.buildElement = this.buildElement.bind(this);
+    this.onFilter = this.onFilter.bind(this);
+    this.onSort = this.onSort.bind(this);
+    this.rebuildNavigator = this.rebuildNavigator.bind(this);
+
+    this.rebuildNavigator();
   }
+
+  onFilter = (filterObject) => {
+    this.state.options.search = filterObject;
+  };
+
+  onSort = (sortedBy) => {
+    this.state.options.filter = sortedBy
+  };
+
+  rebuildNavigator = () => {
+    this.state.nextNavigator = ServerListNavigator.createNavigator({sort: this.state.options.sort, ...this.state.options.filter});
+  };
 
   renderHeader = () => {
     return (

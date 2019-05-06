@@ -7,14 +7,13 @@ export default class ServerListNavigator {
     return new ServerListNavigator(null, API_URL, options);
   };
 
-  constructor(parentNavigator, url, options){
+  constructor(parentNavigator, url, options = {}){
     this.navigation = {};
     if(parentNavigator){
       this.navigation.previous = parentNavigator;
     }
 
-    this.currentUrl = url;
-    this.options = options;
+    this.currentUrl = `${url}&${Object.keys(options).map(key => `${key}=${options[key]}`).join('&')}`;
   }
 
   next = async () => {
