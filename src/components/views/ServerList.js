@@ -196,7 +196,7 @@ export default class ServerList extends Page {
                   elementHeight={60}
                   infiniteLoadBeginEdgeOffset={128}
                   isInfiniteLoading={this.state.isLoading}
-                  loadingSpinnerDelegate={()=><CircularProgress/>}
+                  loadingSpinnerDelegate={<CircularProgress style={{ marginLeft: 'auto', marginRight: 'auto', display: 'block' }} />}
                   onInfiniteLoad={this.loadData}
                   timeScrollStateLastsForAfterUserScrolls={150}
                 >
