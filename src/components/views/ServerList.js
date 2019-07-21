@@ -20,19 +20,37 @@ import ServerListNavigator from "../../serverList/ServerListNavigator";
 import Infinite from 'react-infinite';
 import './ServerList.css';
 import Badge from "../Badge";
+import {AutoSizer} from "react-virtualized";
 
 export default class ServerList extends Page {
 
   constructor(props) {
     super(props, 'Server List');
-    this.state.nextNavigator = ServerListNavigator.createNavigator();
+    this.state.options = {sort: 'rank', filter: {}};
     this.state.servers = [];
     this.state.isLoading = false;
     this.state.showButtons = true;
 
     this.loadData = this.loadData.bind(this);
     this.buildElement = this.buildElement.bind(this);
+    this.onFilter = this.onFilter.bind(this);
+    this.onSort = this.onSort.bind(this);
+    this.rebuildNavigator = this.rebuildNavigator.bind(this);
+
+    this.rebuildNavigator();
   }
+
+  onFilter = (filterObject) => {
+    this.state.options.search = filterObject;
+  };
+
+  onSort = (sortedBy) => {
+    this.state.options.filter = sortedBy
+  };
+
+  rebuildNavigator = () => {
+    this.state.nextNavigator = ServerListNavigator.createNavigator({sort: this.state.options.sort, ...this.state.options.filter});
+  };
 
   renderHeader = () => {
     return (
@@ -89,7 +107,7 @@ export default class ServerList extends Page {
   };
 
   buildElement = (server) =>
-    <ListItem className="infinite-list-item server-item" style={{ minHeight: 60, color: 'white', cursor: 'pointer', width: '99%' }}>
+    <ListItem className="infinite-list-item server-item" style={{ minHeight: 60, color: 'white', cursor: 'pointer', width: '96%', marginLeft: '2%'}}>
       <Avatar src={`https://www.countryflags.io/${server.attributes.country}/flat/64.png`}/>
 
       <ListItemText
@@ -150,8 +168,9 @@ export default class ServerList extends Page {
     </ListItem>;
 
   loadData = () => {
+    console.log('aaa');
     if(this.state.nextNavigator && this.state.nextNavigator.next){
-      this.setState({isLoading: true}, ()=>{
+      this.setState({isLoading: true}, ()=> {
         let servers = this.state.servers;
         this.state.nextNavigator.data().then(async data => {
           servers = servers.concat(data.map(it => this.buildElement(it)));
@@ -167,19 +186,26 @@ export default class ServerList extends Page {
 
   drawnPage = () => {
     return(
-      <div style={{ paddingTop: 256, padding: '1em' }}>
-        <Infinite
-          containerHeight={512}
-          elementHeight={60}
-          infiniteLoadBeginEdgeOffset={128}
-          isInfiniteLoading={this.state.isLoading}
-          loadingSpinnerDelegate={()=><CircularProgress/>}
-          onInfiniteLoad={this.loadData}
-          timeScrollStateLastsForAfterUserScrolls={150}
-        >
-          {this.state.servers}
-        </Infinite>
-      </div>
+      <AutoSizer>
+        {
+          ({ height, width }) => (
+            (height > 0 && width > 0) &&
+              <div style={{ width: width }}>
+                <Infinite
+                  containerHeight={height}
+                  elementHeight={60}
+                  infiniteLoadBeginEdgeOffset={128}
+                  isInfiniteLoading={this.state.isLoading}
+                  loadingSpinnerDelegate={<CircularProgress style={{ marginLeft: 'auto', marginRight: 'auto', display: 'block' }} />}
+                  onInfiniteLoad={this.loadData}
+                  timeScrollStateLastsForAfterUserScrolls={150}
+                >
+                  {this.state.servers}
+                </Infinite>
+              </div>
+          )
+        }
+      </AutoSizer>
     );
   };
 }
