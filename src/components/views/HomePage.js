@@ -19,7 +19,7 @@ export default class HomePage extends Page {
 
     renderHeader = () =>
       (
-        <div style={{ flexGrow: 1, display: 'flex' }}>
+        <div style={{ flexGrow: 1, display: 'flex', position: 'fixed', width: '100%' }}>
           <IconButton disabled>
             <AccountCircle/>
           </IconButton>
