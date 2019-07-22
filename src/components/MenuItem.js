@@ -23,17 +23,16 @@ export default class MenuItem extends React.Component {
         >
           <Avatar
             src={this.props.icon}
-            className="button-style"
+            className="button-style themed-container"
           />
           <ListItemText
             primary={
-              <Typography style={{color: '#FFFFFF', fontFamily: 'rtb', textTransform: 'uppercase'}} variant="h4" noWrap={true} align="center">
-                {this.props.title}
+              <Typography variant="h4" align="center">
+                <span className='button-label-text'>{this.props.title}</span>
               </Typography>
             }
-            className="button-style"
+            className="button-style themed-container"
             style={{
-              color: 'white',
               marginLeft: '1em',
               minHeight: '3em',
             }}
