@@ -12,13 +12,18 @@ export default class HomePage extends Page {
         this.state = {
             title: 'Rust Toolbox',
             buttons: [
-              <MenuItem title="Server List" icon="/icons/server_list.png" goto="servers"/>
+              <MenuItem title="Server List" icon="/icons/server_list.png" goto="servers"/>,
             ]
         }
     }
 
-    renderHeader = () =>
-      (
+    scrollEffect = (event) => {
+      if(event.target.scrollTop <= 256){
+      event.target.style.backgroundPositionY = `${(event.target.scrollTop / 4 - 64) | 0}px`;
+     }
+    };
+
+    renderHeader = () => (
         <header>
           <IconButton disabled>
             <AccountCircle/>
@@ -27,24 +32,17 @@ export default class HomePage extends Page {
             <Settings/>
           </IconButton>
         </header>
-      );
+    );
 
-    drawnPage = () => {
-        return(
-          <div className="page-container" style={{backgroundPositionY: '-64px'}} onScroll={(event) => {
-            if(event.target.scrollTop <= 256){
-              event.target.style.backgroundPositionY = `${(event.target.scrollTop / 4 - 64) | 0}px`;
-            }
-          }}>
-            <div style={{height: 256}}/>
-            <img src="/img/title.png" alt="Rust Toolbox" className="title"/>
-            <List>
-              {this.state.buttons}
-            </List>
-            <footer>
-              This is a third-part app and it's not affiliated with Facepunch Studios Ltd
-            </footer>
-          </div>
-        )
-    }
+    drawnPage = () => (
+        <div className="page-container" style={{backgroundPositionY: '-64px'}} onScroll={this.scrollEffect}>
+          <img src="/img/title.png" alt="Rust Toolbox" className="title"/>
+          <List className="button-list">
+            {this.state.buttons}
+          </List>
+          <footer>
+            This is a third-part app and it's not affiliated with Facepunch Studios Ltd
+          </footer>
+        </div>
+    )
 }
