@@ -36,6 +36,7 @@ export default class HomePage extends Page {
 
     drawnPage = () => (
         <div className="page-container" style={{backgroundPositionY: '-64px'}} onScroll={this.scrollEffect}>
+          <div className='title-spacer'/> {/* this is kind of a spacer, don't touch, its working */}
           <img src="/img/title.png" alt="Rust Toolbox" className="title"/>
           <List className="button-list">
             {this.state.buttons}
