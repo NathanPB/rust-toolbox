@@ -1,0 +1,78 @@
+/*
+Rust Toolbox Copyright (C) 2019  Nathan P. Bombana, Lucas Vicari
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+.server-item {
+  border-top: solid 2px #322A48;
+  border-left: solid 2px #322A48;
+  -webkit-box-shadow: 5px 5px 5px -2px rgba(36,6,9,1);
+  -moz-box-shadow: 5px 5px 5px -2px rgba(36,6,9,1);
+  box-shadow: 5px 5px 5px -2px rgba(36,6,9,1);
+
+  padding: 4px;
+  margin: 8px auto 0;
+  width: calc(100% - 32px);
+
+
+  min-height: 60px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+}
+
+.arrow-reversed {
+  transform: rotate(180deg);
+}
+
+.server-item > img {
+  display: block;
+  flex-grow: 1;
+}
+
+.server-info {
+  flex-grow: 100;
+  padding: 0.5em;
+  overflow: hidden;
+}
+
+.server-info > * {
+  max-width: 100%;
+}
+
+.server-players {
+  flex-grow: 1;
+  padding-left: 0.5em;
+  text-align: right;
+}
+
+.server-title {
+  flex-grow: 100;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 768px) {
+  .badges {
+    overflow: auto hidden;
+  }
+
+  .server-title {
+    overflow-x: auto;
+    text-overflow: initial;
+  }
+}

@@ -15,20 +15,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-.server-item {
-  border-top: solid 2px #322A48;
-  border-left: solid 2px #322A48;
-  -webkit-box-shadow: 5px 5px 5px -2px rgba(36,6,9,1);
-  -moz-box-shadow: 5px 5px 5px -2px rgba(36,6,9,1);
-  box-shadow: 5px 5px 5px -2px rgba(36,6,9,1);
-  padding: 4px;
-  margin-bottom: 8px;
-}
-
-.arrow-reversed {
-  transform: rotate(180deg);
-}
-
-li {
-  list-style: none;
+.Badge {
+  border-radius: 4px;
+  padding: 2px;
+  display: inline;
+  margin-right: 4px;
+  color: white;
+  text-transform: capitalize;
+  white-space: nowrap;
 }
