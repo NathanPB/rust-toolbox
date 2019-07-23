@@ -18,12 +18,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import * as React from 'react';
 import Page from "./Page";
 import {
-  Avatar,
   CircularProgress,
   Collapse,
   IconButton,
-  ListItem, ListItemSecondaryAction,
-  ListItemText,
   Toolbar,
   Typography
 } from "@material-ui/core";
@@ -124,65 +121,61 @@ export default class ServerList extends Page {
   };
 
   buildElement = (server) =>
-    <ListItem className="infinite-list-item server-item" style={{ minHeight: 60, color: 'white', cursor: 'pointer', width: '96%', marginLeft: '2%'}}>
-      <Avatar src={`https://www.countryflags.io/${server.attributes.country}/flat/64.png`}/>
+    <article className="infinite-list-item server-item">
+      <img src={`https://www.countryflags.io/${server.attributes.country}/flat/64.png`} alt={`flag ${server.attributes.country}`}/>
+      <section className="server-info">
 
-      <ListItemText
-        primary={
-          <Typography style={{ color: 'white' }}>
-            { false && //TODO something to check if the server is a official one
-              (
-                <span style={{ marginRight: '0.5em' }} title="Official Server">
-                  <VerifiedUser style={{ fontSize: 12, color: 'gold'}}/>
-                </span>
-              )
-            }
+        <section style={{ display: 'flex', flexGrow: '100', maxWidth: '100%' }}>
+          <section className="server-title">
+            { false && /* TODO something to check if the server is a official one */ (
+              <span style={{ marginRight: '0.5em' }} title="Official Server">
+                <VerifiedUser style={{ fontSize: 12, color: 'gold'}}/>
+              </span>
+            )}
             {server.attributes.name}
-          </Typography>
-        }
-        secondary={
-          <div style={{ whiteSpace: 'nowrap' }}>
-            <Badge
-              display={server.attributes.status !== 'online'}
-              color="#D72439"
-              tooltip="Server Status"
-            >
-              {server.attributes.status}
-            </Badge>
-            <Badge
-              color="blue"
-              tooltip="Map Type"
-            >
-              {
-                //Select the icon according to the latitude of the physical server location
-                `${['🌎', '🌍', '🌏'][Math.round(server.attributes.location[1] / 128) + 1]} ${server.attributes.details.map}`
-              }
-            </Badge>
-            <Badge
-              color="blue"
-              tooltip="Map Age"
-            >
-              {
-                //Calculates the server map time based on the last change date
-                '📅 ' + ((+new Date() - +new Date(server.attributes.details.rust_last_seed_change)) / 86400000).toFixed(2)
-              } Days
-            </Badge>
-            <Badge
-              display={server.attributes.details.rust_modded}
-              color="blue"
-              tooltip="Modded Server"
-            >
-             <span> 🔧 Modded</span>
-            </Badge>
-          </div>
-        }
-      />
+          </section>
+          <section className="server-players">
+            {server.attributes.players}/{server.attributes.maxPlayers}
+          </section>
+        </section>
 
-      <ListItemSecondaryAction style={{ paddingRight: '1em' }}>
-        <Typography style={{ color: 'white', blankSpace: 'nowrap' }}>{server.attributes.players}/{server.attributes.maxPlayers}</Typography>
-      </ListItemSecondaryAction>
+        <section className="badges">
+          <Badge
+            display={server.attributes.status !== 'online'}
+            color="#D72439"
+            tooltip="Server Status"
+          >
+            {server.attributes.status}
+          </Badge>
+          <Badge
+            color="blue"
+            tooltip="Map Type"
+          >
+            {
+              //Select the icon according to the latitude of the physical server location
+              `${['🌎', '🌍', '🌏'][Math.round(server.attributes.location[1] / 128) + 1]} ${server.attributes.details.map}`
+            }
+          </Badge>
+          <Badge
+            color="blue"
+            tooltip="Map Age"
+          >
+            {
+              //Calculates the server map time based on the last change date
+              '📅 ' + ((+new Date() - +new Date(server.attributes.details.rust_last_seed_change)) / 86400000).toFixed(2)
+            } Days
+          </Badge>
+          <Badge
+            display={server.attributes.details.rust_modded}
+            color="blue"
+            tooltip="Modded Server"
+          >
+            <span> 🔧 Modded</span>
+          </Badge>
+        </section>
 
-    </ListItem>;
+      </section>
+    </article>;
 
   loadData = () => {
     console.log('aaa');
@@ -207,7 +200,7 @@ export default class ServerList extends Page {
         {
           ({ height, width }) => (
             (height > 0 && width > 0) &&
-              <div style={{ width: width }}>
+              <div style={{ width: width }} className="server-list">
                 <Infinite
                   containerHeight={height}
                   elementHeight={60}

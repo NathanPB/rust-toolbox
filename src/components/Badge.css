@@ -15,23 +15,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import * as React from 'react';
-import './Badge.css';
-
-export default class Badge extends React.Component {
-
-  render = () => {
-    return(
-      ((( this.props.display === undefined) || this.props.display ) && this.props.children) ?
-      <div
-        title={this.props.tooltip}
-        className="Badge"
-        style={{
-          ...this.props.style,
-          backgroundColor: this.props.color,
-        }}>
-        {this.props.children}
-      </div> : null
-    )
-  }
+.Badge {
+  border-radius: 4px;
+  padding: 2px;
+  display: inline;
+  margin-right: 4px;
+  color: white;
+  text-transform: capitalize;
+  white-space: nowrap;
 }
