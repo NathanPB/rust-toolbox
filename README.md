@@ -11,7 +11,7 @@ The Rust Toolbox Wiki is under development and should be released soon.
 
 # Features
  - Server List
- - Ieeh, just that at this time :/
+ - Ieeh, just that for now :/
 
 # Art
 All the art used in the application are primarily made by Lucas Vicari (@lucasvv2) and belongs to Rust Toolbox project.
