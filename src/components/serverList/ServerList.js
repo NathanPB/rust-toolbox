@@ -15,12 +15,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import Infinite from "react-infinite";
 import {CircularProgress} from "@material-ui/core";
 import {AutoSizer} from "react-virtualized";
 import * as React from "react";
 import ServerListNavigator from "../../serverList/ServerListNavigator";
 import ServerListItem from "./ServerListItem";
+import './ServerList.css';
 
 export default function ServerList(props) {
 
@@ -62,24 +62,33 @@ export default function ServerList(props) {
     }
   };
 
+  const checkNeedMoreData = (elementHeight, element) => {
+    let scrollOffset = (element.scrollHeight - elementHeight) - element.scrollTop;
+    return scrollOffset <= 512 || servers.length === 0;
+  };
+
   return (
     <AutoSizer>
       {
         ({ height, width }) => (
           (height > 0 && width > 0) &&
-          <div style={{ width: width }} className="server-list">
-            <Infinite
-              containerHeight={height}
-              elementHeight={60}
-              infiniteLoadBeginEdgeOffset={128}
-              isInfiniteLoading={loading}
-              loadingSpinnerDelegate={<CircularProgress style={{ marginLeft: 'auto', marginRight: 'auto', display: 'block' }} />}
-              onInfiniteLoad={loadData}
-              timeScrollStateLastsForAfterUserScrolls={150}
-            >
-              {servers}
-            </Infinite>
-          </div>
+          <section
+            style={{ width: width, height: height }}
+            className="server-list"
+            onScroll={(e) => {
+              if(checkNeedMoreData(height, e.target)) {
+                loadData()
+              }
+            }}
+          >
+
+            { /* Yeah, pretty shitty code but works better than the last one */ }
+            { servers.length === 0 ? loadData() : null || servers }
+
+            {loading && (
+              <CircularProgress className="loading-spinner" />
+            )}
+          </section>
         )
       }
     </AutoSizer>
