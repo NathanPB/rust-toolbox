@@ -20,7 +20,7 @@ import {AutoSizer} from "react-virtualized";
 import * as React from "react";
 import ServerListNavigator from "../../serverList/ServerListNavigator";
 import ServerListItem from "./ServerListItem";
-import './ServerList.css';
+import styles from './ServerList.module.css';
 
 export default function ServerList(props) {
 
@@ -74,7 +74,7 @@ export default function ServerList(props) {
           (height > 0 && width > 0) &&
           <section
             style={{ width: width, height: height }}
-            className="server-list"
+            className={styles['server-list']}
             onScroll={(e) => {
               if(checkNeedMoreData(height, e.target)) {
                 loadData()
@@ -86,7 +86,7 @@ export default function ServerList(props) {
             { servers.length === 0 ? loadData() : null || servers }
 
             {loading && (
-              <CircularProgress className="loading-spinner" />
+              <CircularProgress className={styles['loading-spinner']} />
             )}
           </section>
         )

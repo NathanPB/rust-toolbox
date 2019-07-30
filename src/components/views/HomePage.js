@@ -20,7 +20,7 @@ import MenuItem from "../MenuItem";
 import Page from "./Page";
 import {IconButton, List} from "@material-ui/core";
 import { AccountCircle, Settings } from "@material-ui/icons";
-import './HomePage.css';
+import styles from './HomePage.module.css';
 
 export default class HomePage extends Page {
 
@@ -31,7 +31,7 @@ export default class HomePage extends Page {
             buttons: [
               <MenuItem title="Server List" icon="/icons/server_list.png" goto="servers"/>,
             ]
-        }
+        };
     }
 
     scrollEffect = (event) => {
@@ -41,7 +41,7 @@ export default class HomePage extends Page {
     };
 
     renderHeader = () => (
-        <header>
+        <header className={styles.header}>
           <IconButton disabled>
             <AccountCircle/>
           </IconButton>
@@ -52,13 +52,13 @@ export default class HomePage extends Page {
     );
 
     drawnPage = () => (
-        <div className="page-container" style={{backgroundPositionY: '-64px'}} onScroll={this.scrollEffect}>
-          <div className='title-spacer'/> {/* this is kind of a spacer, don't touch, its working */}
-          <img src="/img/title.png" alt="Rust Toolbox" className="title"/>
-          <List className="button-list">
+        <div className={styles['page-container']} style={{backgroundPositionY: '-64px'}} onScroll={this.scrollEffect}>
+          <div className={styles['title-spacer']}/> {/* this is kind of a spacer, don't touch, its working */}
+          <img src="/img/title.png" alt="Rust Toolbox" className={styles.title}/>
+          <List className={styles['button-list']}>
             {this.state.buttons}
           </List>
-          <footer>
+          <footer className={styles.footer}>
             This is a third-part app and it's not affiliated with Facepunch Studios Ltd
           </footer>
         </div>

@@ -35,7 +35,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     z-index: 1;
 }
 
-footer {
+.footer {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -47,7 +47,7 @@ footer {
     font-size: 13px;
 }
 
-header {
+.header {
     flex-grow: 1;
     display: flex;
     position: fixed;

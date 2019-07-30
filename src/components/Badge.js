@@ -16,7 +16,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import * as React from 'react';
-import './Badge.css';
+import styles from './Badge.module.css';
 
 export default class Badge extends React.Component {
 
@@ -25,7 +25,7 @@ export default class Badge extends React.Component {
       ((( this.props.display === undefined) || this.props.display ) && this.props.children) ?
       <div
         title={this.props.tooltip}
-        className="Badge"
+        className={styles.badge}
         style={{
           ...this.props.style,
           backgroundColor: this.props.color,

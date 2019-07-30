@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import {VerifiedUser} from "@material-ui/icons";
 import Badge from "../Badge";
 import * as React from "react";
+import styles from './ServerListItem.module.css';
 
 export default function ServerListItem(props) {
 
@@ -34,12 +35,12 @@ export default function ServerListItem(props) {
   } = props;
 
   return(
-    <article className="infinite-list-item server-item">
-      <img src={`https://www.countryflags.io/${country}/flat/64.png`} alt={`flag ${country}`}/>
-      <section className="server-info">
+    <article className={styles['server-item']}>
+      <img className={styles['server-flag']} src={`https://www.countryflags.io/${country}/flat/64.png`} alt={`flag ${country}`}/>
+      <section className={styles['server-info']}>
 
         <section style={{ display: 'flex', flexGrow: '100', maxWidth: '100%' }}>
-          <section className="server-title" title={name}>
+          <section className={styles['server-title']} title={name}>
             { false && /* TODO something to check if the server is a official one */ (
               <span style={{ marginRight: '0.5em' }} title="Official Server">
                 <VerifiedUser style={{ fontSize: 12, color: 'gold'}}/>
@@ -47,12 +48,12 @@ export default function ServerListItem(props) {
             )}
             {name}
           </section>
-          <section className="server-players">
+          <section className={styles['server-players']}>
             {players}/{maxPlayers}
           </section>
         </section>
 
-        <section className="badges">
+        <section className={styles.badges}>
           <Badge
             display={status !== 'online'}
             color="#D72439"

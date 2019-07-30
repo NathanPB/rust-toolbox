@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import * as React from 'react';
 import {Avatar, ListItem, ListItemText, Typography} from "@material-ui/core";
 import {Redirect} from "react-router";
-import './MenuItem.css';
+import styles from './MenuItem.module.css';
 
 export default class MenuItem extends React.Component {
 
@@ -36,19 +36,19 @@ export default class MenuItem extends React.Component {
           button={true}
           onClick={ () => this.setState({redirecting: true}) }
           disabled={this.props.disabled === undefined ? false : this.props.disabled}
-          style={{cursor: 'pointer'}}
+          className={styles['menu-item']}
         >
           <Avatar
             src={this.props.icon}
-            className="button-style themed-container"
+            className={[styles['button-style'], 'themed-container']}
           />
           <ListItemText
             primary={
               <Typography variant="h4" align="center">
-                <span className='button-label-text'>{this.props.title}</span>
+                <span className={styles['button-label-text']}>{this.props.title}</span>
               </Typography>
             }
-            className="button-style themed-container"
+            className={[styles['button-style'], 'themed-container']}
             style={{
               marginLeft: '1em',
               minHeight: '3em',

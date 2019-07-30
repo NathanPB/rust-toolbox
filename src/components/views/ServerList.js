@@ -29,7 +29,7 @@ import {
   Menu, ArrowDownward,
   VerifiedUser
 } from "@material-ui/icons"
-import '../serverList/ServerListItem.css';
+import '../serverList/ServerListItem.module.css';
 import Badge from "../Badge";
 import ServerListComponent from '../serverList/ServerList';
 
