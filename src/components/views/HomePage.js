@@ -19,7 +19,7 @@ import * as React from 'react';
 import MenuItem from "../MenuItem";
 import Page from "./Page";
 import {IconButton, List} from "@material-ui/core";
-import { AccountCircle, Settings } from "@material-ui/icons";
+import {AccountCircle, Settings} from "@material-ui/icons";
 import styles from './HomePage.module.css';
 
 export default class HomePage extends Page {

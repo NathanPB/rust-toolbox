@@ -17,20 +17,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import * as React from 'react';
 import Page from "./Page";
-import {
-  Collapse,
-  IconButton,
-  Toolbar,
-  Typography
-} from "@material-ui/core";
-import {
-  Search as IconSearch,
-  SortByAlpha as IconSort,
-  Menu, ArrowDownward,
-  VerifiedUser
-} from "@material-ui/icons"
-import '../serverList/ServerListItem.module.css';
-import Badge from "../Badge";
+import {Collapse, IconButton, Toolbar, Typography} from "@material-ui/core";
+import {ArrowDownward, Menu, Search as IconSearch, SortByAlpha as IconSort} from "@material-ui/icons";
 import ServerListComponent from '../serverList/ServerList';
 
 export default class ServerList extends Page {
@@ -88,7 +76,6 @@ export default class ServerList extends Page {
             onClick={() => this.setState({showButtons: !this.state.showButtons})}
           >
             <ArrowDownward
-              className={`${this.state.showButtons && 'arrow-reversed'}`}
               style={{ color: 'white', fontSize: '1.5em', transition: 'all 0.5s', transform: `rotate(${this.state.showButtons ? 180 : 0}deg)` }}
             />
           </IconButton>
