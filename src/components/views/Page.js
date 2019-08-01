@@ -18,7 +18,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import * as React from 'react'
 import {IconButton, Toolbar, Typography} from "@material-ui/core";
 import {Menu, Settings} from "@material-ui/icons";
-import {Redirect} from "react-router";
 
 export default class Page extends React.Component {
 
@@ -37,11 +36,10 @@ export default class Page extends React.Component {
     return (
       <div style={{width: '100%', zIndex: 1}} className="themed-container">
         <Toolbar disableGutters={true}>
-          <IconButton style={{margin: '0.2em'}} align="left">
+          <IconButton style={{margin: '0.2em'}} align="left" href="/">
             <Menu
               style={{ color: 'white', fontSize: '1.5em' }}
               className="themed-container"
-              onClick={() => this.setState({toMenu: true})}
             />
           </IconButton>
           <div style={{flexGrow: 1}}>
@@ -57,7 +55,7 @@ export default class Page extends React.Component {
               {this.state.title}
             </Typography>
           </div>
-          <IconButton>
+          <IconButton href="#" disabled>
             <Settings style={{ color: 'white', fontSize: '1.5em' }}/>
           </IconButton>
         </Toolbar>
@@ -74,18 +72,10 @@ export default class Page extends React.Component {
     return undefined;
   };
 
-  render = () => {
-    if(this.state.toMenu){
-      return (<Redirect to="/"/>)
-    } else {
-      return(
-        <div style={{display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw'}}>
-          { this.renderHeader() }
-          <div style={{flexGrow: 100}}>
-            { this.drawnPage() }
-          </div>
-        </div>
-      )
-    }
-  }
+  render = () => <div style={{display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw'}}>
+    { this.renderHeader() }
+    <div style={{flexGrow: 100}}>
+      { this.drawnPage() }
+    </div>
+  </div>
 }

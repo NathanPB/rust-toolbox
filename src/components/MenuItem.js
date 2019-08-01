@@ -17,45 +17,37 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import * as React from 'react';
 import {Avatar, ListItem, ListItemText, Typography} from "@material-ui/core";
-import {Redirect} from "react-router";
+import {Link} from 'react-router-dom';
 import styles from './MenuItem.module.css';
 
 export default class MenuItem extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {redirecting: false};
-  }
+  render = () =>
+    <Link to={this.props.goto} style={{ textDecoration: 'none' }}>
+      <ListItem
+        component="li"
+        button={true}
+        onClick={ () => this.setState({redirecting: true}) }
+        disabled={this.props.disabled === undefined ? false : this.props.disabled}
+        className={styles['menu-item']}
+      >
+        <Avatar
+          src={this.props.icon}
+          className={[styles['button-style'], 'themed-container']}
+          component="div"/>
+        <ListItemText
+          primary={
+            <Typography variant="h4" align="center">
+              <span className={styles['button-label-text']}>{this.props.title}</span>
+            </Typography>
+          }
+          className={[styles['button-style'], 'themed-container']}
+          style={{
+            marginLeft: '1em',
+            minHeight: '3em',
+          }}
+        />
+      </ListItem>
+    </Link>;
 
-  render = () => {
-    if(this.state.redirecting) {
-      return (<Redirect to={this.props.goto}/>)
-    } else {
-      return (
-        <ListItem
-          button={true}
-          onClick={ () => this.setState({redirecting: true}) }
-          disabled={this.props.disabled === undefined ? false : this.props.disabled}
-          className={styles['menu-item']}
-        >
-          <Avatar
-            src={this.props.icon}
-            className={[styles['button-style'], 'themed-container']}
-          />
-          <ListItemText
-            primary={
-              <Typography variant="h4" align="center">
-                <span className={styles['button-label-text']}>{this.props.title}</span>
-              </Typography>
-            }
-            className={[styles['button-style'], 'themed-container']}
-            style={{
-              marginLeft: '1em',
-              minHeight: '3em',
-            }}
-          />
-        </ListItem>
-      )
-    }
-  }
 }

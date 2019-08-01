@@ -52,7 +52,7 @@ export default class ServerList extends Page {
           <IconButton
             style={{margin: '0.2em'}}
             align="left"
-            onClick={() => this.setState({toMenu: true})}
+            href="/"
           >
             <Menu
               style={{ color: 'white', fontSize: '1.5em' }}
@@ -73,6 +73,7 @@ export default class ServerList extends Page {
             </Typography>
           </div>
           <IconButton
+            href="#"
             onClick={() => this.setState({showButtons: !this.state.showButtons})}
           >
             <ArrowDownward
@@ -90,10 +91,10 @@ export default class ServerList extends Page {
       return (
         <Collapse in={this.state.showButtons}>
           <Toolbar style={{ justifyContent: 'space-between', flexGrow: 100 }}>
-            <IconButton>
+            <IconButton href="#" disabled>
               <IconSearch style={iconStyles} className='themed-container'/>
             </IconButton>
-            <IconButton>
+            <IconButton href="#" disabled>
               <IconSort style={iconStyles} className='themed-container'/>
             </IconButton>
           </Toolbar>
