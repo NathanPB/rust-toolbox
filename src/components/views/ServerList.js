@@ -89,7 +89,7 @@ export default class ServerList extends Page {
           >
             <ArrowDownward
               className={`${this.state.showButtons && 'arrow-reversed'}`}
-              style={{ color: 'white', fontSize: '1.5em', transition: 'all 0.5s' }}
+              style={{ color: 'white', fontSize: '1.5em', transition: 'all 0.5s', transform: `rotate(${this.state.showButtons ? 180 : 0}deg)` }}
             />
           </IconButton>
         </Toolbar>
