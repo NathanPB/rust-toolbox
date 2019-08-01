@@ -83,7 +83,7 @@ export default function ServerList(props) {
           >
 
             { /* Yeah, pretty shitty code but works better than the last one */ }
-            { servers.length === 0 ? loadData() : null || servers }
+            { servers.length === 0 ? loadData() : servers }
 
             {loading && (
               <CircularProgress className={styles['loading-spinner']} />

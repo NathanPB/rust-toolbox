@@ -17,20 +17,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import * as React from 'react';
 import Page from "./Page";
-import {
-  Collapse,
-  IconButton,
-  Toolbar,
-  Typography
-} from "@material-ui/core";
-import {
-  Search as IconSearch,
-  SortByAlpha as IconSort,
-  Menu, ArrowDownward,
-  VerifiedUser
-} from "@material-ui/icons"
-import '../serverList/ServerListItem.module.css';
-import Badge from "../Badge";
+import {Collapse, IconButton, Toolbar, Typography} from "@material-ui/core";
+import {ArrowDownward, Menu, Search as IconSearch, SortByAlpha as IconSort} from "@material-ui/icons";
 import ServerListComponent from '../serverList/ServerList';
 
 export default class ServerList extends Page {
@@ -64,7 +52,7 @@ export default class ServerList extends Page {
           <IconButton
             style={{margin: '0.2em'}}
             align="left"
-            onClick={() => this.setState({toMenu: true})}
+            href="/"
           >
             <Menu
               style={{ color: 'white', fontSize: '1.5em' }}
@@ -85,11 +73,11 @@ export default class ServerList extends Page {
             </Typography>
           </div>
           <IconButton
+            href="#"
             onClick={() => this.setState({showButtons: !this.state.showButtons})}
           >
             <ArrowDownward
-              className={`${this.state.showButtons && 'arrow-reversed'}`}
-              style={{ color: 'white', fontSize: '1.5em', transition: 'all 0.5s' }}
+              style={{ color: 'white', fontSize: '1.5em', transition: 'all 0.5s', transform: `rotate(${this.state.showButtons ? 180 : 0}deg)` }}
             />
           </IconButton>
         </Toolbar>
@@ -103,10 +91,10 @@ export default class ServerList extends Page {
       return (
         <Collapse in={this.state.showButtons}>
           <Toolbar style={{ justifyContent: 'space-between', flexGrow: 100 }}>
-            <IconButton>
+            <IconButton href="#" disabled>
               <IconSearch style={iconStyles} className='themed-container'/>
             </IconButton>
-            <IconButton>
+            <IconButton href="#" disabled>
               <IconSort style={iconStyles} className='themed-container'/>
             </IconButton>
           </Toolbar>

@@ -19,7 +19,7 @@ import * as React from 'react';
 import MenuItem from "../MenuItem";
 import Page from "./Page";
 import {IconButton, List} from "@material-ui/core";
-import { AccountCircle, Settings } from "@material-ui/icons";
+import {AccountCircle, Settings} from "@material-ui/icons";
 import styles from './HomePage.module.css';
 
 export default class HomePage extends Page {
@@ -42,10 +42,10 @@ export default class HomePage extends Page {
 
     renderHeader = () => (
         <header className={styles.header}>
-          <IconButton disabled>
+          <IconButton href="#" disabled>
             <AccountCircle/>
           </IconButton>
-          <IconButton disabled>
+          <IconButton href="#" disabled>
             <Settings/>
           </IconButton>
         </header>
@@ -55,7 +55,7 @@ export default class HomePage extends Page {
         <div className={styles['page-container']} style={{backgroundPositionY: '-64px'}} onScroll={this.scrollEffect}>
           <div className={styles['title-spacer']}/> {/* this is kind of a spacer, don't touch, its working */}
           <img src="/img/title.png" alt="Rust Toolbox" className={styles.title}/>
-          <List className={styles['button-list']}>
+          <List component="li" className={styles['button-list']}>
             {this.state.buttons}
           </List>
           <footer className={styles.footer}>
