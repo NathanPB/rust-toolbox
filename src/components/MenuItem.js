@@ -24,30 +24,12 @@ export default class MenuItem extends React.Component {
 
   render = () =>
     <Link to={this.props.goto} style={{ textDecoration: 'none' }}>
-      <ListItem
-        component="li"
-        button={true}
-        onClick={ () => this.setState({redirecting: true}) }
-        disabled={this.props.disabled === undefined ? false : this.props.disabled}
-        className={styles['menu-item']}
-      >
-        <Avatar
-          src={this.props.icon}
-          className={[styles['button-style'], 'themed-container']}
-          component="div"/>
-        <ListItemText
-          primary={
-            <Typography variant="h4" align="center">
-              <span className={styles['button-label-text']}>{this.props.title}</span>
-            </Typography>
-          }
-          className={[styles['button-style'], 'themed-container']}
-          style={{
-            marginLeft: '1em',
-            minHeight: '3em',
-          }}
-        />
-      </ListItem>
+      <li className={styles['menu-item']}>
+        <img src={this.props.icon} className={`${styles.icon} themed-container`}/>
+        <div className={`${styles.title} themed-container`}>
+          <span className={styles.label}>{this.props.title}</span>
+        </div>
+      </li>
     </Link>;
 
 }

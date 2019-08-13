@@ -17,21 +17,33 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 .menu-item {
     cursor: pointer;
+    width: calc(100% - 2em);
+    margin-left: 1em;
+    margin-right: 1em;
+    display: flex;
 }
 
-.button-style {
+.icon {
+    display: block;
+    width: auto;
+    height: 2.5em;
+    flex-grow: 1;
     padding: 4px;
 }
 
-.button-label-text {
+.title {
+    flex: 100 100 auto;
+    margin-left: 0.5em;
+    padding: 4px;
+}
+
+.label {
+    text-align: center;
     color: #FFFFFF;
     font-family: rtb;
     text-transform: uppercase;
-    font-size: 32px;
-}
-
-@media only screen and (max-width: 375px) {
-    .button-label-text {
-        font-size: 24px;
-    }
+    font-size: 24px;
+    font-weight: 400;
+    display: block;
+    line-height: 1.5em;
 }
