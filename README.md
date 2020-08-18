@@ -1,3 +1,6 @@
+# Achieve Note
+Fortunately, some months after the project started, Facepunch Studios already added the main feature of this app ingame, so there is no strong points in continuing it now. This project is achieved for the time being.
+
 ![Rust Toolbox](https://repository-images.githubusercontent.com/180052529/a431c680-acbe-11e9-921b-785107953cca)
 
 # Description
